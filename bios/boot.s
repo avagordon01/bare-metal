@@ -1,6 +1,8 @@
 .code16
 
+.section .text.entry
     call clear
+    call print_b
     #call long_mode
     mov $1048576, %esp
     call main
@@ -21,6 +23,7 @@ enable_a20:
 clear:
     mov $0x0f, %ah
     int $0x10
+    mov $0x107, %al
     mov $0x00, %ah
     int $0x10
     ret
